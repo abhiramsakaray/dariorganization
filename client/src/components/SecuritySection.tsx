@@ -6,7 +6,7 @@ export default function SecuritySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="security-title">
-            Bank-Level <span className="text-dari-green">Security</span>
+            International Account <span className="text-dari-green">Security</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-testid="security-description">
             Your funds and personal information are protected with enterprise-grade security, 
