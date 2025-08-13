@@ -1,4 +1,5 @@
-import { Zap, DollarSign, Clock, CreditCard, Wallet } from "lucide-react";
+import { Zap, DollarSign, Clock, CreditCard } from "lucide-react";
+
 
 export default function PaymentsSection() {
   return (
@@ -64,7 +65,7 @@ export default function PaymentsSection() {
               <div className="payment-card-3d floating-card mt-8 floating-delay-1" data-testid="payment-card-usdt">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <Wallet className="text-dari-green text-xl" />
+                    <img src="/attached_assets/dari_black_1755062691300.png" alt="DARI Wallet Logo" className="w-8 h-8 object-contain" />
                     <span className="text-xs">USDT</span>
                   </div>
                   <div className="space-y-1">

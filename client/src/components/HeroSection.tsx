@@ -52,10 +52,9 @@ export default function HeroSection() {
         <div className="flex justify-center lg:justify-end relative">
           <div className="wallet-3d floating-card max-w-sm" data-testid="wallet-mockup">
             <div className="text-center space-y-6">
-              <div className="w-16 h-16 bg-dari-green rounded-full mx-auto flex items-center justify-center">
-                <Wallet className="text-white text-2xl" />
+              <div className="w-20 h-20 mx-auto flex items-center justify-center">
+                <img src="/public/dari_logo.png" alt="DARI Wallet Logo" className="w-full h-full object-contain" />
               </div>
-              <h3 className="text-2xl font-bold" data-testid="wallet-title">DARI Wallet</h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg" data-testid="balance-usdc">
                   <div className="flex items-center space-x-3">

@@ -12,18 +12,36 @@ export default function CTASection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Success!",
-        description: "You've been added to our waitlist. We'll notify you when DARI Wallet launches.",
+    try {
+      const res = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
       });
-      setEmail("");
+      if (res.ok) {
+        toast({
+          title: "Success!",
+          description: "You've been added to our waitlist. We'll notify you when DARI Wallet launches.",
+        });
+        setEmail("");
+      } else {
+        const data = await res.json();
+        toast({
+          title: "Error",
+          description: data.error || "Failed to join waitlist.",
+          variant: "destructive",
+        });
+      }
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: "Network error. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
