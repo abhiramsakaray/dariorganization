@@ -10,12 +10,12 @@ export default function HeroSection() {
             Launching Soon
           </div>
           <h1 className="text-5xl lg:text-7xl font-bold leading-tight" data-testid="hero-title">
-            Send Anywhere<br />
+            DARI Wallet: Send Anywhere<br />
             <span className="text-dari-green">at Any Time!</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl" data-testid="hero-description">
-            Next-generation stablecoin wallet for secure, instant, and borderless transactions. 
-            Supporting USDT and USDC with global reach and 24/7 availability.
+            The next-generation stablecoin wallet enabling secure, instant international payments. 
+            Supporting USDC and USDT with full KYC/AML compliance, 24/7 availability, and bank-level security for global transactions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Button 

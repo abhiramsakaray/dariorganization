@@ -2,6 +2,13 @@
 
 This is a modern full-stack web application built for DARI Wallet, a stablecoin payment platform that supports USDC and USDT transactions. The application features a marketing landing page showcasing the wallet's capabilities for secure, instant, and borderless cryptocurrency payments. The project uses a monorepo structure with a React frontend, Express backend, and PostgreSQL database with Drizzle ORM for data management.
 
+**Recent Changes (Jan 2025):**
+- Comprehensive SEO optimization with meta tags, structured data, and semantic HTML
+- Updated social media links: X (Twitter) and LinkedIn integration
+- Removed unnecessary footer navigation sections per user request
+- Enhanced content for AI search visibility and better search rankings
+- Added comprehensive Open Graph and Twitter Card meta tags
+
 # User Preferences
 
 Preferred communication style: Simple, everyday language.

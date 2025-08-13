@@ -35,8 +35,8 @@ export default function CTASection() {
           Your Payments?
         </h2>
         <p className="text-xl text-gray-300 max-w-2xl mx-auto" data-testid="cta-description">
-          Join thousands of users waiting for the future of stablecoin payments. 
-          Be among the first to experience DARI Wallet.
+          Join the waitlist for DARI Wallet and be first to access secure USDC & USDT payments. 
+          Get early access to the future of international money transfers with KYC-compliant stablecoin banking.
         </p>
         
         {/* Email Signup */}

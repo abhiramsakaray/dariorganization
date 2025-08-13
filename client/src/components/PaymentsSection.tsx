@@ -11,8 +11,8 @@ export default function PaymentsSection() {
               Made Simple
             </h2>
             <p className="text-xl text-gray-600" data-testid="payments-description">
-              Send money across borders instantly with our advanced stablecoin infrastructure. 
-              No more waiting days for traditional bank transfers.
+              Transform your cross-border money transfers with DARI Wallet's USDC and USDT support. 
+              Send international payments instantly with low fees, bypassing traditional banking delays and high costs.
             </p>
             <div className="space-y-6">
               <div className="flex items-start space-x-4" data-testid="feature-instant">
