@@ -66,17 +66,9 @@ export default function CTASection() {
         </div>
         
         {/* Social Proof */}
-        <div className="flex justify-center items-center space-x-8 pt-8 border-t border-gray-800" data-testid="social-proof">
-          <div className="text-center" data-testid="waitlist-stat">
-            <div className="text-2xl font-bold text-dari-green">10,000+</div>
-            <div className="text-sm text-gray-400">Waitlist Users</div>
-          </div>
-          <div className="text-center" data-testid="countries-stat">
-            <div className="text-2xl font-bold text-dari-green">50+</div>
-            <div className="text-sm text-gray-400">Countries</div>
-          </div>
+        <div className="flex justify-center items-center pt-8 border-t border-gray-800" data-testid="social-proof">
           <div className="text-center" data-testid="launch-stat">
-            <div className="text-2xl font-bold text-dari-green">Q1 2024</div>
+            <div className="text-2xl font-bold text-dari-green">2026</div>
             <div className="text-sm text-gray-400">Launch Date</div>
           </div>
         </div>
