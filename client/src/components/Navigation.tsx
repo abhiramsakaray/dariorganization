@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Wallet } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import dariLogo from "@assets/dari_black_1755064142210.png";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,11 +30,13 @@ export default function Navigation() {
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-dari-green rounded-lg flex items-center justify-center" data-testid="logo-3d">
-              <Wallet className="text-white text-xl" />
-            </div>
-            <span className="text-xl font-bold" data-testid="logo-text">DARI</span>
+          <div className="flex items-center">
+            <img 
+              src={dariLogo} 
+              alt="DARI Wallet Logo" 
+              className="h-10 w-auto"
+              data-testid="logo-image"
+            />
           </div>
           
           {/* Desktop Navigation */}
