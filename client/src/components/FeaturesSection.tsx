@@ -10,7 +10,7 @@ export default function FeaturesSection() {
             Powered by <span className="text-dari-green">Leading Stablecoins</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto" data-testid="features-description">
-            DARI Wallet supports USDC and USDT, the world's most trusted stablecoins, 
+            DARI supports USDC and USDT, the world's most trusted stablecoins, 
             enabling instant cross-border payments with minimal fees and maximum security for international money transfers.
           </p>
         </div>

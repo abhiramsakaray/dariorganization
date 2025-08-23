@@ -1,6 +1,15 @@
+import { fileURLToPath } from "url";
+import { join } from "path";
+import path from "path";
+import { existsSync } from "fs";
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { saveEmailToWaitlist } from "./waitlist.js";
+
+// Proper __filename and __dirname for ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
@@ -36,7 +45,38 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
+
+
+
 (async () => {
+  // Serve React static build from correct path
+  const clientBuildPath = path.join(__dirname, "../dist/public");
+  app.use(express.static(clientBuildPath));
+  // Serve index.html for all non-API routes
+  app.get(/^\/(?!api\/).*/, (req, res) => {
+    res.sendFile(path.join(clientBuildPath, "index.html"));
+  });
+
+  // API endpoint to save email to waitlist
+  app.post("/api/waitlist", (req, res) => {
+    const { email } = req.body;
+    if (!email || typeof email !== "string") {
+      return res.status(400).json({ error: "Invalid email" });
+    }
+    saveEmailToWaitlist(email);
+    res.json({ success: true });
+  });
+
+  app.get("/download-waitlist", (req, res) => {
+    const filePath = join(__dirname, "../data/waitlist.txt");
+    if (!existsSync(filePath)) {
+      return res.status(404).send("Waitlist file not found.");
+    }
+    res.download(filePath, "waitlist.txt");
+  });
+
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {

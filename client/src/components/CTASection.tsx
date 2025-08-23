@@ -22,7 +22,7 @@ export default function CTASection() {
       if (res.ok) {
         toast({
           title: "Success!",
-          description: "You've been added to our waitlist. We'll notify you when DARI Wallet launches.",
+          description: "You've been added to our waitlist. We'll notify you when DARI launches.",
         });
         setEmail("");
       } else {
@@ -53,7 +53,7 @@ export default function CTASection() {
           Your Payments?
         </h2>
         <p className="text-xl text-gray-300 max-w-2xl mx-auto" data-testid="cta-description">
-          Join the waitlist for DARI Wallet and be first to access secure USDC & USDT payments. 
+          Join the waitlist for DARI and be first to access secure USDC & USDT payments. 
           Get early access to the future of international money transfers with KYC-compliant stablecoin banking.
         </p>
         
@@ -79,7 +79,7 @@ export default function CTASection() {
             </Button>
           </form>
           <p className="text-sm text-gray-400 mt-4" data-testid="privacy-notice">
-            We'll notify you when DARI Wallet launches. No spam, ever.
+            We'll notify you when DARI launches. No spam, ever.
           </p>
         </div>
         

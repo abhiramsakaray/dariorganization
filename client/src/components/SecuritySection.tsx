@@ -35,7 +35,7 @@ export default function SecuritySection() {
             <div className="security-shield mx-auto">
               <Key className="text-white text-xl" />
             </div>
-            <h3 className="text-xl font-bold">Custodial Wallet</h3>
+            <h3 className="text-xl font-bold">Custodial Account</h3>
             <p className="text-gray-600">We securely manage your private keys with institutional-grade protection.</p>
           </div>
           

@@ -10,12 +10,12 @@ export default function Footer() {
             <div className="flex items-center">
               <img 
                 src={dariLogo} 
-                alt="DARI Wallet Logo" 
+                alt="DARI Logo" 
                 className="h-10 w-auto"
               />
             </div>
             <p className="text-gray-600" data-testid="footer-description">
-              Next-generation stablecoin wallet for secure, instant, and borderless transactions. Supporting USDC and USDT for international payments with KYC/AML compliance.
+              Next-generation platform for secure, instant, and borderless transactions. Supporting USDC and USDT for international payments with KYC/AML compliance.
             </p>
           </div>
           
@@ -23,12 +23,12 @@ export default function Footer() {
             <h3 className="font-semibold">Follow Us</h3>
             <div className="flex space-x-4">
               <a 
-                href="https://x.com/dariwallet" 
+                href="https://x.com/dari" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-dari-green transition-colors" 
                 data-testid="social-x"
-                aria-label="Follow DARI Wallet on X (formerly Twitter)"
+                aria-label="Follow DARI on X (formerly Twitter)"
               >
                 <Twitter className="text-xl" />
               </a>
@@ -44,14 +44,14 @@ export default function Footer() {
               </a>
             </div>
             <p className="text-sm text-gray-500">
-              Join our community for updates on DARI Wallet launch and stablecoin payment innovations.
+              Join our community for updates on DARI launch and stablecoin payment innovations.
             </p>
           </div>
         </div>
         
         <div className="border-t border-gray-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center" data-testid="footer-bottom">
           <p className="text-gray-600 text-sm" data-testid="copyright">
-            © 2024 DARI Wallet. All rights reserved.
+            © 2024 DARI. All rights reserved.
           </p>
           <p className="text-gray-600 text-sm mt-4 md:mt-0" data-testid="launch-message">
             Launching Soon • Get Early Access

@@ -1,4 +1,4 @@
-import { Zap, DollarSign, Clock, CreditCard } from "lucide-react";
+import { Zap, DollarSign, Clock, CreditCard, Globe } from "lucide-react";
 
 
 export default function PaymentsSection() {
@@ -12,7 +12,7 @@ export default function PaymentsSection() {
               Made Simple
             </h2>
             <p className="text-xl text-gray-600" data-testid="payments-description">
-              Transform your cross-border money transfers with DARI Wallet's USDC and USDT support. 
+              Transform your cross-border money transfers with DARI's USDC and USDT support. 
               Send international payments instantly with low fees, bypassing traditional banking delays and high costs.
             </p>
             <div className="space-y-6">
@@ -65,7 +65,7 @@ export default function PaymentsSection() {
               <div className="payment-card-3d floating-card mt-8 floating-delay-1" data-testid="payment-card-usdt">
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <img src="/attached_assets/dari_black_1755062691300.png" alt="DARI Wallet Logo" className="w-8 h-8 object-contain" />
+                    <CreditCard className="text-dari-green text-xl" />
                     <span className="text-xs">USDT</span>
                   </div>
                   <div className="space-y-1">

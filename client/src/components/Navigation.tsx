@@ -33,7 +33,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <img 
               src={dariLogo} 
-              alt="DARI Wallet Logo" 
+              alt="DARI Logo"
               className="h-10 w-auto"
               data-testid="logo-image"
             />
