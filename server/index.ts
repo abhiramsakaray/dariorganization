@@ -6,6 +6,10 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import { saveEmailToWaitlist } from "./waitlist.js";
+import fs from "fs/promises";
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+dotenv.config();
 
 // Proper __filename and __dirname for ESM
 const __filename = fileURLToPath(import.meta.url);
@@ -45,11 +49,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
-
-
-
 (async () => {
   // Serve React static build from correct path
   const clientBuildPath = path.join(__dirname, "../dist/public");
@@ -59,23 +58,52 @@ app.use((req, res, next) => {
     res.sendFile(path.join(clientBuildPath, "index.html"));
   });
 
-  // API endpoint to save email to waitlist
-  app.post("/api/waitlist", (req, res) => {
-    const { email } = req.body;
+  // API endpoint to save email to waitlist and send confirmation email
+  app.post("/api/waitlist", async (req, res) => {
+    const { email, name } = req.body;
     if (!email || typeof email !== "string") {
       return res.status(400).json({ error: "Invalid email" });
     }
-    saveEmailToWaitlist(email);
-    res.json({ success: true });
+    try {
+      await saveEmailToWaitlist(email, name);
+
+      // Load and personalize the HTML template
+      const templatePath = path.join(__dirname, "emailTemplates", "waitlist.html");
+      let html = await fs.readFile(templatePath, "utf-8");
+      html = html.replace("{{name}}", name ? name : "there");
+
+      // Send confirmation email
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT) || 587,
+        secure: process.env.SMTP_SECURE === "true",
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS
+        }
+      });
+
+      await transporter.sendMail({
+        from: process.env.SMTP_FROM || process.env.SMTP_USER,
+        to: email,
+        subject: "DARI Waitlist Registration Successful",
+        html
+      });
+
+      res.json({ success: true });
+    } catch (err) {
+      res.status(500).json({ error: "Failed to save to waitlist or send email" });
+    }
   });
 
-  app.get("/download-waitlist", (req, res) => {
-    const filePath = join(__dirname, "../data/waitlist.txt");
-    if (!existsSync(filePath)) {
-      return res.status(404).send("Waitlist file not found.");
-    }
-    res.download(filePath, "waitlist.txt");
-  });
+  // (Optional) Remove file-based download-waitlist endpoint if not needed
+  // app.get("/download-waitlist", (req, res) => {
+  //   const filePath = join(__dirname, "../data/waitlist.txt");
+  //   if (!existsSync(filePath)) {
+  //     return res.status(404).send("Waitlist file not found.");
+  //   }
+  //   res.download(filePath, "waitlist.txt");
+  // });
 
   const server = await registerRoutes(app);
 
@@ -87,19 +115,12 @@ app.use((req, res, next) => {
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
   const port = parseInt(process.env.PORT || '5000', 10);
   server.listen({
     port,

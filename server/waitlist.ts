@@ -1,35 +1,30 @@
-
-
-import { existsSync, mkdirSync, appendFileSync, copyFileSync } from "fs";
-import { join } from "path";
+import { Pool } from "pg";
+import dotenv from "dotenv";
+import fs from "fs";
+import path from "path";
 import { fileURLToPath } from "url";
-
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = join(__filename, "..", ".");
-const dataDir = join(__dirname, "../data");
-const txtPath = join(dataDir, "waitlist.txt");
+const __dirname = path.dirname(__filename);
 
-export function saveEmailToWaitlist(email: string) {
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
+// Ensure the waitlist table exists
+const ensureTable = `
+  CREATE TABLE IF NOT EXISTS waitlist (
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    email TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
+`;
+pool.query(ensureTable).catch(console.error);
+
+export async function saveEmailToWaitlist(email: string, name?: string) {
   if (!email || typeof email !== "string") return;
-  if (!existsSync(dataDir)) {
-    mkdirSync(dataDir);
-  }
-  const line = `${email}\t${new Date().toISOString()}\n`;
-  appendFileSync(txtPath, line, { encoding: "utf8" });
-
-  // Only copy to dist/public for production
-  const distPublicDir = join(__dirname, "../dist/public");
-  const distWaitlist = join(distPublicDir, "waitlist.txt");
-  try {
-    if (existsSync(txtPath)) {
-      // Ensure dist/public exists
-      if (!existsSync(distPublicDir)) {
-        mkdirSync(distPublicDir, { recursive: true });
-      }
-      copyFileSync(txtPath, distWaitlist);
-    }
-  } catch (e) {
-    console.error("Failed to copy waitlist.txt to dist:", e);
-  }
+  const query = `INSERT INTO waitlist (email, name) VALUES ($1, $2);`;
+  await pool.query(query, [email, name || null]);
 }

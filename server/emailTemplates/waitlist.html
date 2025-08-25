@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DARI — Thank You</title>
+  <meta name="description" content="Thank you for registering for early access to DARI." />
+  <style>
+    :root {
+      --bg: #0b0f18;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #60a5fa;
+      --accent-2: #34d399;
+      --ring: rgba(96, 165, 250, 0.45);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(52,211,153,0.15), transparent 60%),
+                  radial-gradient(1000px 600px at -10% 110%, rgba(96,165,250,0.18), transparent 60%),
+                  var(--bg);
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      line-height: 1.5;
+    }
+    .shell {
+      width: min(680px, 100%);
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+      color: var(--text);
+      text-decoration: none;
+      user-select: none;
+    }
+    .logo-mark {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center; font-weight: 800; color: #0b1020;
+      box-shadow: 0 8px 24px rgba(96,165,250,.35), 0 2px 6px rgba(52,211,153,.25);
+    }
+    .card {
+      margin-top: 1.25rem;
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      backdrop-filter: blur(6px);
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .85rem; color: var(--accent-2);
+      background: rgba(52,211,153,.12);
+      border: 1px solid rgba(52,211,153,.35);
+      padding: .35rem .65rem; border-radius: 999px;
+    }
+    .check {
+      width: 20px; height: 20px; display: inline-block;
+    }
+    h1 {
+      margin: .6rem 0 0;
+      font-size: clamp(1.8rem, 2.6vw + 1rem, 2.6rem);
+      line-height: 1.15;
+      letter-spacing: .2px;
+    }
+    .lead { color: var(--muted); margin-top: .8rem; }
+    .note {
+      margin-top: 1.4rem;
+      padding: 1rem 1.1rem;
+      border: 1px dashed rgba(255,255,255,.18);
+      border-radius: 14px;
+      background: rgba(17,24,39,.55);
+      color: var(--text);
+    }
+    .founder {
+      display: flex; align-items: center; gap: .9rem; margin-top: 1.6rem;
+    }
+    .avatar { width: 44px; height: 44px; border-radius: 50%;
+      display: grid; place-items: center; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #08101f; box-shadow: 0 6px 18px rgba(96,165,250,.35);
+    }
+    .meta small { display: block; color: var(--muted); margin-top: 2px; }
+    .cta {
+      margin-top: 1.6rem; display: inline-block; text-decoration: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #08101f; font-weight: 700; padding: .8rem 1rem; border-radius: 14px;
+      border: none; cursor: pointer; box-shadow: 0 10px 22px rgba(96,165,250,.4);
+    }
+    .cta:focus { outline: 3px solid var(--ring); outline-offset: 2px; }
+    footer { margin-top: 1.6rem; color: var(--muted); font-size: .9rem; text-align: center; }
+    .mailto { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main class="shell" aria-labelledby="title">
+    <a class="logo" href="https://dariorganization.com/" aria-label="DARI Home">
+      <span class="logo-mark" aria-hidden="true">D</span>
+      <span>DARI</span>
+    </a>
+
+    <section class="card">
+      <span class="badge" aria-live="polite">
+        <svg class="check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" opacity=".35" stroke-width="2"/>
+          <path d="M7 12.5l3.2 3.1L17.5 8.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Registration received
+      </span>
+
+      <h1 id="title">Thank you for registering!</h1>
+      <p class="lead">We’re excited to have you on the waitlist. You’ll be among the first to hear when DARI launches—no spam, ever.</p>
+
+      <div class="note" role="note" aria-label="Message from the Founder">
+        <p style="margin:0">"On behalf of the entire DARI team, thank you for trusting us. We’re building a secure, compliant, and truly global payments experience—and we can’t wait to share it with you."</p>
+      </div>
+
+      <div class="founder">
+        <div class="avatar" aria-hidden="true">AS</div>
+        <div class="meta">
+          <strong>Abhiram Sakaray</strong>
+          <small>Founder &amp;, DARI Organization</small>
+          <small><a class="mailto" href="mailto:abhiram@dariorganization.com">abhiram@dariorganization.com</a></small>
+        </div>
+      </div>
+
+      <a class="cta" href="https://dariorganization.com/">Return to DARI</a>
+    </section>
+
+    <footer>
+      © 2024 DARI. All rights reserved.
+    </footer>
+  </main>
+</body>
+</html>
