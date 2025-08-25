@@ -65,8 +65,8 @@ app.use((req, res, next) => {
     try {
       await saveEmailToWaitlist(email, name);
 
-      // Load and personalize the HTML template
-      const templatePath = path.join(__dirname, "emailTemplates", "waitlist.html");
+      // Load and personalize the HTML template (always from project root)
+      const templatePath = path.join(process.cwd(), "server", "emailTemplates", "waitlist.html");
       let html = await fs.readFile(templatePath, "utf-8");
       html = html.replace("{{name}}", name ? name : "there");
 
