@@ -37,11 +37,9 @@ app.use((req, res, next) => {
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
-
       if (logLine.length > 80) {
         logLine = logLine.slice(0, 79) + "…";
       }
-
       log(logLine);
     }
   });
@@ -92,6 +90,7 @@ app.use((req, res, next) => {
 
       res.json({ success: true });
     } catch (err) {
+      console.error(err); // Log the actual error for debugging
       res.status(500).json({ error: "Failed to save to waitlist or send email" });
     }
   });
@@ -110,7 +109,6 @@ app.use((req, res, next) => {
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
-
     res.status(status).json({ message });
     throw err;
   });

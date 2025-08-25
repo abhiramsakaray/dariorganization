@@ -10,7 +10,10 @@ const __dirname = path.dirname(__filename);
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
+  ssl: {
+  ca: fs.readFileSync(path.join(__dirname, "../ca.pem")).toString(),
+  rejectUnauthorized: true
+}
 });
 // Ensure the waitlist table exists
 const ensureTable = `
