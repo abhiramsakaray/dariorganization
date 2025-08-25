@@ -1,4 +1,4 @@
-import { Twitter, Linkedin } from "lucide-react";
+import { Twitter, Linkedin, Instagram } from "lucide-react";
 import dariLogo from "@assets/dari_black_1755064142210.png";
 
 export default function Footer() {
@@ -23,7 +23,7 @@ export default function Footer() {
             <h3 className="font-semibold">Follow Us</h3>
             <div className="flex space-x-4">
               <a 
-                href="https://x.com/dari" 
+                href="https://x.com/dariwallet" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-dari-green transition-colors" 
@@ -31,6 +31,16 @@ export default function Footer() {
                 aria-label="Follow DARI on X (formerly Twitter)"
               >
                 <Twitter className="text-xl" />
+              </a>
+              <a 
+                href="https://www.instagram.com/dariorganization/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-dari-green transition-colors" 
+                data-testid="social-instagram"
+                aria-label="Follow DARI on Instagram"
+              >
+                <Instagram className="text-xl" />
               </a>
               <a 
                 href="https://www.linkedin.com/company/dariorganization" 
